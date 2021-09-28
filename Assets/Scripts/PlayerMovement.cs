@@ -7,6 +7,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float Speed = 10.0f;
 
+    [SerializeField]
+    private float JumpForce = 500;
+
+    [SerializeField]
+    private float Friction = 5;
+
     Rigidbody2D Rigidbody;
 
     // Start is called before the first frame update
@@ -21,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Rigidbody.AddForce(new Vector2(0, 500));
+            Rigidbody.AddForce(new Vector2(0, JumpForce));
         }
     }
     
@@ -41,4 +47,26 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            InvokeRepeating("AddFriction", 0, 0.01f);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            CancelInvoke();
+        }
+    }
+
+    void AddFriction()
+    {
+        transform.position += Vector3.right * -Friction * 0.01f;
+    }
+
 }
