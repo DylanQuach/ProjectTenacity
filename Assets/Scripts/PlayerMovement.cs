@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float JumpForce = 500;
 
+    private float PlayerDefaultSpeed;
+
     Rigidbody2D Rigidbody;
 
 
@@ -17,12 +19,12 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        PlayerDefaultSpeed = Speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Rigidbody.AddForce(new Vector2(0, JumpForce));
@@ -46,4 +48,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void SetSpeed(float NewSpeed)
+    {
+        Speed = NewSpeed;
+    }
+
+    public float GetPlayerDefaultSpeed()
+    {
+        return PlayerDefaultSpeed;
+    }
 }

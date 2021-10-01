@@ -26,12 +26,6 @@ public class ConveyorBelt : MonoBehaviour
         Player = GameObject.FindGameObjectsWithTag("Player")[0];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
