@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 5120850035828578097}
   - component: {fileID: 5120850035828578098}
   - component: {fileID: 5120850035828578061}
+  - component: {fileID: 196901456}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -184,7 +185,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 10
   JumpForce: 500
-  Friction: 10
 --- !u!50 &5120850035828578098
 Rigidbody2D:
   serializedVersion: 4
@@ -232,3 +232,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &196901456
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5120850035828578102}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 685dff110cffdc64498ec3254719df94, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
