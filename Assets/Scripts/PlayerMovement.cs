@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             Rigidbody.AddForce(new Vector2(0, JumpForce));
             animator.SetBool("Jump", true);
@@ -58,11 +58,8 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Speed", 10);
         }
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0);
-
-        if (hit.collider != null)
+        if (IsGrounded())
         {
-            Debug.Log("Hit");
             animator.SetBool("Jump", false);
         }
         else
@@ -80,5 +77,12 @@ public class PlayerMovement : MonoBehaviour
     public float GetPlayerDefaultSpeed()
     {
         return PlayerDefaultSpeed;
+    }
+
+    private bool IsGrounded()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0);
+
+        return hit.collider != null;
     }
 }
