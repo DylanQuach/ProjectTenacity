@@ -28,20 +28,23 @@ public class ConveyorBelt : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            InvokeRepeating("AddFriction", 0, 0.01f);
-        }
+        EnterCollision(collision.gameObject);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            CancelInvoke();
-        }
+        ExitCollision(collision.gameObject);
     }
 
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        EnterCollision(col.gameObject);
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        ExitCollision(other.gameObject);
+    }
 
     void AddFriction()
     {
@@ -52,6 +55,22 @@ public class ConveyorBelt : MonoBehaviour
         else if(Direction == MovementDirection.Right)
         {
             Player.transform.position += Vector3.right * +PlayerSpeed * 0.01f;
+        }
+    }
+
+    void EnterCollision(GameObject GO)
+    {
+        if (GO.CompareTag("Player"))
+        {
+            InvokeRepeating("AddFriction", 0, 0.01f);
+        }
+    }
+
+    void ExitCollision(GameObject GO)
+    {
+        if (GO.CompareTag("Player"))
+        {
+            CancelInvoke();
         }
     }
 }
