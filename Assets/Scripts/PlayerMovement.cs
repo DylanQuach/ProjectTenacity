@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         PlayerDefaultSpeed = Speed;
+
     }
 
     // Update is called once per frame
@@ -65,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             animator.SetBool("Jump", true);
+
         }
 
     }
